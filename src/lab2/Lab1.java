@@ -1,31 +1,35 @@
 package lab2;
 import lab2.Point3d;
-import java.util.Scanner;
-
 public class Lab1 {
-    public static void main(String[] args){
-        Scanner in = new Scanner(System.in);
-        System.out.println("Input Point");
-        Point3d A = new Point3d(in.nextDouble(), in.nextDouble(), in.nextDouble());
-        System.out.println("Input Point");
-        Point3d B = new Point3d(in.nextDouble(), in.nextDouble(), in.nextDouble());
-        System.out.println("Input Point");
-        Point3d C = new Point3d(in.nextDouble(), in.nextDouble(), in.nextDouble());
-        if (A.equals(B)||B.equals(C)||C.equals(A))
-            System.out.println("Ошибка: Есть равные точки");
-        else
-            System.out.println("Площадь треугольника = " + computeArea(A, B, C));
+    //Start
+    public static void main(String[] args) {
+        Point3d A = getPointFromConsole();
+        Point3d B = getPointFromConsole();
+        Point3d C = getPointFromConsole();
+        System.out.println(computeArea(A,B,C));
     }
 
-    // вычисляем площать треугольника
-    public static double computeArea(Point3d first, Point3d second, Point3d third){
-        double a = Math.sqrt(Math.pow(first.getX() - second.getX() , 2) + Math.pow(first.getY() -
-                second.getY(), 2) + Math.pow(first.getZ() - second.getZ(), 2));
-        double b = Math.sqrt(Math.pow(second.getX() - third.getX() , 2) +
-                Math.pow(second.getY() - third.getY(), 2) + Math.pow(second.getZ() - third.getZ(), 2));
-        double c = Math.sqrt(Math.pow(first.getX() - third.getX() , 2) + Math.pow(first.getY() -
-                third.getY(), 2) + Math.pow(first.getZ() - third.getZ(), 2));
-        double p = (a + c + b) / 2;
-        return Math.sqrt(p * (p - a) * (p - c) * (p - b));
+    //вычисляем площадь треугольника
+    public static double computeArea(Point3d A, Point3d B, Point3d C) {
+        if (A.isEqualTo(B) || B.isEqualTo(C) || C.isEqualTo(A)) {
+            System.out.println("Точки не должны быть равны");
+            return -1;
+        }
+        double AB = A.distanceTo(B);
+        double BC = B.distanceTo(C);
+        double CA = C.distanceTo(A);
+        double p = (AB+BC+CA)/2.0;
+        return Math.sqrt(p*(p-AB)*(p-BC)*(p-CA));
+    }
+
+    //обработчик консольного ввода
+    private static Point3d getPointFromConsole() {
+        System.out.println("Введите координаты(x y z): ");
+        String input = System.console().readLine();
+        String inpArr[] = input.split(" ");
+        double x = Double.parseDouble(inpArr[0]);
+        double y = Double.parseDouble(inpArr[1]);
+        double z = Double.parseDouble(inpArr[2]);
+        return new Point3d(x,y,z);
     }
 }

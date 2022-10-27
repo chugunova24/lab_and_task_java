@@ -1,65 +1,37 @@
 package lab2;
 
-public class Point3d {
 
-    private double xCoord;
-    private double yCoord;
+//Point 3d class
+public class Point3d extends Point2d {
     private double zCoord;
 
-
-    // создание объекта с тремя значениями с плавающей точкой
-    public Point3d ( double x, double y, double z) {
-        xCoord = x;
-        yCoord = y;
+    //init
+    public Point3d (double x, double y, double z) {
+        super(x,y);
         zCoord = z;
     }
 
-    // новый объект со значениями 0.0 по умолчанию
+    //init default
     public Point3d () {
-        this(0.0, 0.0, 0.0);
+        this(0, 0, 0);
     }
 
-    // получить значение х
-    public double getX () {
-        return xCoord;
-    }
-
-    // получить значение y
-    public double getY () {
-        return yCoord;
-    }
-
-    // получить значение z
     public double getZ () {
         return zCoord;
     }
 
-    // установить значение х
-    public void setX (double val) {
-        xCoord = val;
-    }
 
-    // установить значение y
-    public void setY (double val) {
-        yCoord = val;
-    }
-
-    // установить значение z
-    public void setZ (double val) {
+    public void setZ ( double val) {
         zCoord = val;
     }
 
-    // сравнение значений двух объектов
-    public boolean equals(Point3d obj){
-        return xCoord==obj.xCoord && yCoord==obj.yCoord &&
-                zCoord==obj.zCoord;
+    // Проверка равны ли координаты точек
+    public boolean isEqualTo(Point3d other) {
+        return super.getX() == other.getX() && super.getY() == other.getY() && zCoord == other.getZ();
     }
 
-    // вычиcляет pаccтoяние междy двyмя тoчками,
-    public double distanceTo(Point3d obj) {
-        return Math.sqrt(Math.pow(xCoord - obj.xCoord, 2) + Math.pow(yCoord -
-                obj.yCoord, 2) + Math.pow(zCoord - obj.zCoord, 2));
+    // Вычисление дистанции между точками
+    public double distanceTo(Point3d other) {
+        return Math.sqrt(Math.pow(super.getX() - other.getX(),2) + Math.pow(super.getY() - other.getY(),2) + Math.pow(zCoord - other.getZ(),2));
     }
-
 }
-
