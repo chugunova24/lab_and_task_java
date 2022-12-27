@@ -10,6 +10,19 @@ public class task2 {
         String input = System.console().readLine();
 
 
+//        int n = Integer.parseInt(input);
+//        System.out.println(boxSeq(n));
+
+
+//        String[] inpArr = input.split(" ");
+//        System.out.println(isPrefix(inpArr[0], inpArr[1]));
+//        System.out.println(isSuffix(inpArr[0], inpArr[1]));
+
+
+//        System.out.println(isStrangePair("sparkling", "groups"));
+//        System.out.println(isStrangePair("bush", "hubris"));
+//        System.out.println(isStrangePair("", ""));
+
 
 
 //        System.out.println(isValid(input));
@@ -22,31 +35,17 @@ public class task2 {
 //        System.out.println(getDecimalPlaces(input));
         
 
-//        String[] inp =  input.split(" ");
-//        int[] inpArr = new int[inp.length];
-//        for (int i = 0; i < inp.length; i++) {
-//            inpArr[i] = Integer.parseInt(inp[i]);
-//        }
-//        System.out.println(Arrays.toString(cumulativeSum(inpArr)));
+//        System.out.println(Arrays.toString(cumulativeSum(array(input))));
 
 
-//        String[] inp =  input.split(" ");
-//        int[] inpArr = new int[inp.length];
-//        for (int i = 0; i < inp.length; i++) {
-//            inpArr[i] = Integer.parseInt(inp[i]);
-//        }
-//        System.out.println(isAvgWhole(inpArr));
+
+//        System.out.println(isAvgWhole(array(input)));
 
 
-//        String[] inp =  input.split(" ");
-//        int[] inpArr = new int[inp.length];
-//        for (int i = 0; i < inp.length; i++) {
-//            inpArr[i] = Integer.parseInt(inp[i]);
-//        }
-//        System.out.println(differenceMaxMin(inpArr));
+//        System.out.println(differenceMaxMin(array(input)));
 
 
-//        System.out.println(repeat(input, 1));
+//        System.out.println(repeat(input, 5));
     }
 
     public static int[] array(String input){
@@ -79,7 +78,7 @@ public class task2 {
     // находим минимум и максимум введенного массива
     // и возвращаем разницу между этими числами
     public static int differenceMaxMin(int[] inpArr){
-        Arrays.sort(inpArr);
+//        Arrays.sort(inpArr);
         int max = Arrays.stream(inpArr).max().getAsInt();
         int min = Arrays.stream(inpArr).min().getAsInt();
 //        System.out.println(Arrays.toString(inpArr));
@@ -121,7 +120,7 @@ public class task2 {
         for (int i = 0; i < inp.length; i++){
             if (inp[i].equals(".")) index_dot = i;
         }
-        System.out.println(index_dot);
+//        System.out.println(index_dot);
 
         if (index_dot != 0) return inp.length - index_dot-1;
         else return 0;
@@ -168,9 +167,10 @@ public class task2 {
     // и первый элемент второго слова совпадает с последним элементом первого
     // то вернется true
 
-    public static boolean isStrangePair (String word1, String word2){
-        return word1.charAt(0) == word2.charAt(word2.length() - 1) &&
-                word2.charAt(0) == word2.charAt(word1.length() - 1);
+    public static boolean isStrangePair(String a, String b) {
+        if(a == "" && b == "") return true;
+        if(a == "" || b == "") return false;
+        return a.charAt(a.length()-1) == b.charAt(0) && a.charAt(0) == b.charAt(b.length()-1);
     }
 
 
